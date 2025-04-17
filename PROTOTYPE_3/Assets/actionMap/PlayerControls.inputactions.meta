@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 948c7726e128fac49b1f9e84ab392add
+guid: 3fe4861454d6d3149b38a8693e14c4da
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: BumpyJump.TheCharacterController
