@@ -26,7 +26,7 @@ namespace BumpyJump.TheCharacterController
 
         private PlayerLocomotionInput _playerLocomotionInput;
         private Vector2 _cameraRotation = Vector2.zero;
-        private Vector2 _playerTargetRotation = Vector2.zero;
+        private Vector2 _playerTargetRotation = Vector2.zero;//bitch
         private void Awake()
         {
             _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
@@ -34,7 +34,7 @@ namespace BumpyJump.TheCharacterController
 
         private void Update()
         {
-            Vector3 cameraForwardXZ =  new Vector3(_playerCamera.transform.forward.x, 0f, _playerCamera.transform.forward.z).normalized;
+            Vector3 cameraForwardXZ = new Vector3(_playerCamera.transform.forward.x, 0f, _playerCamera.transform.forward.z).normalized;
             Vector3 cameraRightXZ = new Vector3(_playerCamera.transform.right.x, 0f, _playerCamera.transform.right.z).normalized;
             Vector3 movementDirection = cameraRightXZ * _playerLocomotionInput.MovementInput.x + cameraForwardXZ * _playerLocomotionInput.MovementInput.y;
 
@@ -50,6 +50,18 @@ namespace BumpyJump.TheCharacterController
             _characterController.Move(newVelocity * Time.deltaTime);
         }
 
+        private void LateUpdate()
+        {
+            _cameraRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
+            _cameraRotation.y = Mathf.Clamp(_cameraRotation.y - lookSenseV * _playerLocomotionInput.LookInput.y, -lookLimitV, lookLimitV);
+
+            _playerTargetRotation.x += transform.eulerAngles.x * _playerLocomotionInput.LookInput.x;
+            transform.rotation = Quaternion.Euler(0f, _playerTargetRotation.x, 0f);
+
+            _playerCamera.transform.rotation = Quaternion.Euler(_cameraRotation.y, _cameraRotation.x, 0f);
+        }
     }
+
 }
+
 

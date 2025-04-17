@@ -607,6 +607,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b1fa890e00ed8438a714e56dd5e838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 812989756}
+  _playerCamera: {fileID: 330585545}
+  runAcceleration: 50
+  runSpeed: 4
+  drag: 30
+  lookSenseH: 0.1
+  lookSenseV: 0.1
+  lookLimitV: 89
 --- !u!114 &812989755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +651,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
